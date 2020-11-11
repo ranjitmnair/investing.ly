@@ -43,6 +43,7 @@ router.get ('/getcryptoprice/:cryptoCode', verifyToken, async (req, res) => {
 router.post ('/buycrypto', verifyToken, async (req, res) => {
   var code = req.body.cryptoCode; //stock code
   code = code.toUpperCase ();
+  if(req.body.purchasePrice<0||req.body.numberOfCoins<=0){return res.status(400).json({message:"Incorrect values"});}
 
   const options = {
     method: 'GET',

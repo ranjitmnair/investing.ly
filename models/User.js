@@ -16,11 +16,7 @@ const userSchema=new mongoose.Schema({
         required:true,
         min:7
     },
-    // stocks:[{type:ObjectId,boughtprice:Number,quantity:Number,ref:"Stock"}]
-    // // followers:[{type:ObjectId,ref:"User"}],
-    // // followerCount:Number,
-    // // following:[{type:ObjectId,ref:"User"}],
-    // // followingCount:Number
+
 })
 
 module.exports=mongoose.model('User',userSchema);

@@ -35,7 +35,7 @@ router.get ('/getfundprice/:schemeCode', verifyToken, async (req, res) => {
 router.post ('/buyfund', verifyToken, async (req, res) => {
   var code = req.body.schemeCode; //stock code
   code = code.toString ();
-
+  if(req.body.purchaseNAV<0||req.body.numberOfUnits<=0){return res.status(400).json({message:"Incorrect values"});}
   const options = {
     method: 'GET',
     url: 'https://rapidapi.p.rapidapi.com/fetchLatestNAV',

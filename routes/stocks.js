@@ -34,6 +34,7 @@ router.get ('/getstockprice/:code', verifyToken, async (req, res) => {
 router.post ('/buystock', verifyToken, async (req, res) => {
   var symbol = req.body.symbol; //stock code
   symbol = symbol.toUpperCase () + '.NS';
+  if(req.body.purchasePrice<0||req.body.numberOfShares<=0){return res.status(400).json({message:"Incorrect values"});}
 
   const options = {
     method: 'GET',
